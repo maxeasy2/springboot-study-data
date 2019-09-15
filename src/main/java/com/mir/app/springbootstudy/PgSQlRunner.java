@@ -12,7 +12,7 @@ import java.sql.Statement;
 
 
 @Component
-public class MysqlRunner implements ApplicationRunner {
+public class PgSQlRunner implements ApplicationRunner {
 
     @Autowired
     private DataSource dataSource;
@@ -25,16 +25,18 @@ public class MysqlRunner implements ApplicationRunner {
         try(Connection connection = dataSource.getConnection()) {
             String url = connection.getMetaData().getURL();
             String userName = connection.getMetaData().getUserName();
+            String driverName = connection.getMetaData().getDriverName();
 
             System.out.println("url :: " + url);
             System.out.println("userName :: " + userName);
+            System.out.println("driverName :: " + driverName);
 
-            String sql = "CREATE TABLE USER (ID INTEGER NOT NULL, name VARCHAR(255), PRIMARY KEY (id))";
+            String sql = "CREATE TABLE account (ID INTEGER NOT NULL, name VARCHAR(255), PRIMARY KEY (id))";
 
             Statement statement = connection.createStatement();
             statement.executeUpdate(sql);
         }
 
-        jdbcTemplate.execute("INSERT INTO USER VALUES (1, 'sample')");
+        jdbcTemplate.execute("INSERT INTO account VALUES (1, 'sample')");
     }
 }
