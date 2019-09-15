@@ -9,8 +9,8 @@
  - H2 콘솔 접속(실습시 방법2 사용)
    - 방법1) spring-boot-devtools 의존 추가.
    - 방법2) spring.h2.console.enabled=true 만 추가.
-아래와 같이 콘솔 접속 (접속시URL 확인필요)
-http://localhost:8080/h2-console
+   - 아래와 같이 콘솔 접속 (접속시URL 확인필요)
+     > http://localhost:8080/h2-console
 - 실습 SQL
     -   CREATE TABLE USER (ID INTEGER NOT NULL, name VARCHAR(255), PRIMARY KEY (id))
     -   INSERT INTO USER VALUES (1, ‘sample’)
